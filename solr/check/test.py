@@ -154,7 +154,7 @@ solrTypes = [
 ]
 
 urls = [
-    'http://cms-solr-slave-gcp.cbs.com//solr/cbs-blog/select',
+    'http://cms-solr-slave-gcp.cbs.com/solr/cbs-blog/select',
     'http://cms-solr-slave.intl.paramountplus.com/solr/cbs-blog/select',
     'http://cms-solr-slave.stage.intl.paramountplus.com/solr/cbs-blog/select']
 for url in urls:
