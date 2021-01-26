@@ -161,8 +161,13 @@ urls = [
 for url in urls:
     print(url)
 
-    print(f'type,locale,region,,fallback')
-    for t in solrTypes:
+print('type,', end='')
+for url in urls:
+    print('locale,region,fallback,', end='')
+print('')
+for t in solrTypes:
+    print(f'{t},', end='')
+    for url in urls:
         params = dict(
             q='type:' + t,
             rows='1'
@@ -173,6 +178,6 @@ for url in urls:
         locale = root.find('./result/doc/str[@name="region"]') is not None
         region = root.find('./result/doc/str[@name="locale"]') is not None
         fallback = root.find('./result/doc/arr[@name="all_locales"]') is not None
-        if locale or region or fallback:
-            print(f'{t},{locale},{region},{fallback}')
-
+#        if locale or region or fallback:
+        print(f'{locale},{region},{fallback},', end='')
+    print('')
