@@ -154,16 +154,18 @@ solrTypes = [
 ]
 
 urls = [
-    'http://cms-solr-slave-gcp.cbs.com/solr/cbs-blog/select',
-    'http://cms-solr-slave.intl.paramountplus.com/solr/cbs-blog/select',
-    'http://cms-solr-slave.stage.intl.paramountplus.com/solr/cbs-blog/select']
+    'http://api-solr-gcp.cbs.com:7305/solr/cbs-blog/select',  # US PROD
+    'http://cms-solr-slave.intl.paramountplus.com/solr/cbs-blog/select',  # P+ PROD
+    'http://cms-solr-slave.stage.intl.paramountplus.com/solr/cbs-blog/select',  # P+ STAGE
+    'http://test-www-cms-solr-slave-gcp.tv.cbs.com/solr/cbs-blog/select'  # TEST-WWW
+]
 for url in urls:
     print(url)
 
     print(f'type,locale,region,,fallback')
     for t in solrTypes:
         params = dict(
-            q='type:'+t,
+            q='type:' + t,
             rows='1'
         )
         resp = requests.get(url=url, params=params)
