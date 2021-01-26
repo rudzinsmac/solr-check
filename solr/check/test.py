@@ -175,9 +175,13 @@ for t in solrTypes:
         resp = requests.get(url=url, params=params)
         data = resp.text
         root = ET.ElementTree(ET.fromstring(data)).getroot()
+        exists = root.find('./result/doc') is not None
         locale = root.find('./result/doc/str[@name="region"]') is not None
         region = root.find('./result/doc/str[@name="locale"]') is not None
         fallback = root.find('./result/doc/arr[@name="all_locales"]') is not None
 #        if locale or region or fallback:
-        print(f'{locale},{region},{fallback},', end='')
+        if exists:
+            print(f'{locale},{region},{fallback},', end='')
+        else:
+            print(f',,,', end='')
     print('')
