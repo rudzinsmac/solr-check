@@ -172,5 +172,6 @@ for url in urls:
         locale = root.find('./result/doc/str[@name="region"]') is not None
         region = root.find('./result/doc/str[@name="locale"]') is not None
         fallback = root.find('./result/doc/arr[@name="all_locales"]') is not None
-        print(f'{t},{locale},{region},{fallback}')
+        if locale or region or fallback:
+            print(f'{t},{locale},{region},{fallback}')
 
